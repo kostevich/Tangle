@@ -1,9 +1,11 @@
 #!/usr/bin/python
 
-from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QToolBar, QStatusBar
+from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QToolBar, QListWidget, QVBoxLayout, QHBoxLayout
 
 from PyQt6.QtGui import QAction
 
+ListRepository = ("1", "2", "3", "4", "5",)
+FunctionRepository = ("уДАИЛАСМВ", "2", )
 # Создание приложения.
 Tangle = QApplication([])
 
@@ -15,8 +17,36 @@ class MainWindow(QMainWindow):
         # Имя приложения.
         self.setWindowTitle("Tangle")
         
+
+        # Создание названия окошка.
         Lable = QLabel("Repository", self)
-        Lable.move(250, 100)
+        # Перемещение окошка.
+        Lable.move(150, 100)
+
+
+        # Создание списка репозиториев.
+        self.List = QListWidget(self)
+        # Перемещение.
+        self.List.move(50, 150)
+        # Размер списка.
+        self.List.setFixedSize(300, 500)
+        # Добавление элементов списка.
+        self.List.addItems(ListRepository)
+
+        self.List.itemClicked.connect(self.ChoiceRepository)
+    
+
+        # Создание списка функций для работы репозитория.
+        self.FunctionsRepository = QListWidget(self)
+        # Перемещение.
+        self.FunctionsRepository.move(450, 450)
+        # Размер списка.
+        self.FunctionsRepository.setFixedSize(100, 100)
+        # Добавление элементов списка.
+        self.FunctionsRepository.addItems(FunctionRepository)
+
+        self.FunctionsRepository.itemClicked.connect(self.ChoiceRepository)
+        
 
         # Создание панели инструментов.
         PanelMenu = QToolBar("Показать/Скрыть панель инструментов")
@@ -30,6 +60,12 @@ class MainWindow(QMainWindow):
         self.addToolBar(PanelMenu)
         
 
+
+
+
+        def ChoiceRepository(self, item):
+                print("Вы кликнули: {}".format(item.text()))
+                if item.text()=="item2": print("Делайте что-нибудь.")
 
 # Создание окошка.
 window = MainWindow()
