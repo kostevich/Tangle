@@ -24,4 +24,4 @@ python main.py
 
 ![image](https://github.com/kostevich/RegistrationFromApp/assets/109979502/529dff2c-afda-437e-b739-2518b1803c13)
 
-_Copyright © Kostevich Irina. 2023._
+_Copyright © Kostevich Irina. 2023-2024._
